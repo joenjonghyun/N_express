@@ -29,12 +29,11 @@ app.post('/login', cors(corsOptions), (req, res) => {
 })
 app.get(
     '/logout',
-    //passport.authenticate('jwt', {session: false}),
+    passport.authenticate('jwt', {session: false}),
     function (req, res) {
-        console.log(' logout 진입 ')
-        //UserService().logout(req, res)
-        //req.logout();
-        res.json({message: 'ok'});
+        UserService().logout(req, res)
+        req.logout();
+        res.json({msg: 'LOGOUT'});
     }
 );
 export default app
